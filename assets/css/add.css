@@ -475,4 +475,5 @@
   margin-left: calc(50% - 50vw);
   margin-top: -260px;
   width: 100vw;
+  filter: brightness(0.5);
 }
