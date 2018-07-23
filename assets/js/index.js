@@ -3,6 +3,7 @@ $(function(){
     setBannerDate();
     //设置颜色随机
     colorRadom($('.contact-item'), 'color');          
+    colorRadom($('.post-full-header,.post-full-content'), 'border-color');          
     // 首页背景banner
     var mySwiper = new Swiper('.swiper-container', {
         loop: true,

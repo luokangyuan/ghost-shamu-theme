@@ -49,6 +49,7 @@
     height: 100vh;
     overflow: hidden;
     .swiper-container{
+        filter: brightness(.85);
         .swiper-wrapper{
             .swiper-slide{
                 >img{
@@ -115,6 +116,7 @@
                 background: rgba(0,0,0,.6);
                 transition: @animateTime;
                 text-decoration: none;
+                z-index: 100;
                 &:hover{
                     background: #000;
                 }
@@ -142,6 +144,76 @@
                     }
                     &:hover{
                         background: #000;
+                        .sub-menu-box{
+                            display: block;
+                        }
+                    }
+                }
+                .nav-{
+                    .sub-menu-box{
+                        display: none;
+                        position: fixed;
+                        border-top: solid 10px rgba(46, 45, 45, 0);
+                        margin-top: -5px;
+                        top: 55px;
+                        left: 0px;
+                        width: 100%;
+                        background: rgba(255, 255, 255, 0.95);
+                        .sub-content{
+                            display: flex;
+                            flex-direction: row;
+                            padding: 50px 0 70px;
+                            .left-pic{
+                                width: 250px;
+                                height: 300px;
+                                background: #dedede;
+                                overflow: hidden;
+                                flex-shrink: 0;
+                                >img{
+                                    width: 300px;
+                                    height: 300px;
+                                    // filter: grayscale(1);
+                                }
+                            }
+                            .right-content{
+                                flex-shrink: 0;
+                                width: calc(~'100% - 250px');
+                                font-size: 30px;
+                                padding: 0 40px;
+                                .mune-item{
+                                    float: left;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-content: center;
+                                    text-align: center;
+                                    padding: 20px;
+                                    cursor: pointer;
+                                    width:25%;
+                                    height: 150px;
+                                    color: #888888;
+                                    transition: @animateTime;
+                                    .img-box{
+                                        width:100%;
+                                        height: 60px;
+                                        >img{
+                                            transition: @animateTime;
+                                            width: 60px;
+                                            height: 100%;
+                                            filter: grayscale(.8);
+                                        }
+                                    }
+                                    &:hover{
+                                        color: rgb(0, 0, 0);
+                                        transform: scale(1.02);
+                                        .img-box{
+                                            >img{
+                                                filter: grayscale(0);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -156,8 +228,8 @@
     top:0;
 }
 .container{
-    width: 1200px !important;
-    margin-left: calc(~'50% - 600px');
+    width: 1128px !important;
+    margin-left: calc(~'50% - 564px');
 }
 
 //banner上面的信息
@@ -196,7 +268,7 @@
             letter-spacing: 15px;
         }
         &:hover{
-            background: rgba(56, 56, 56, 0.6);
+            background: rgba(0, 0, 0, 0.6);
             color: #fff;
             transform: scale(1.02);
         }
@@ -211,11 +283,12 @@
         color: #de622f;
         font-weight: bold;
         cursor: pointer;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.3);
         box-shadow: @shadow;
         transition: @animateTime;
         &:hover{
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.4);
+            color: #ca582b;
             transform: scale(1.02);
         }
         .nongli{
@@ -304,8 +377,8 @@
                         }
                         .aticle-txt{
                             height: 86px;
-                            margin-top: 10px;
                             font-weight:normal;
+                            margin-top: 5px;
                             display: flex;
                             flex-direction: column;
                             overflow: hidden;
@@ -363,7 +436,7 @@
             width: 100%;
             margin-bottom: 20px;
             box-shadow: @shadow;
-            background: rgba(255,255,255,.8);
+            background: rgba(255,255,255,.95);
             padding: 10px 20px;
             transition: @animateTime;
             overflow: hidden;
@@ -451,8 +524,6 @@
                         border-radius: 50%;
                         &:hover{
                             opacity: 1;
-                            transform: translateY(-2px);
-                            box-shadow: @shadow;
                         }
                     }
                     .txt{
@@ -519,5 +590,20 @@
     margin-left: calc(~'50% - 50vw');
     margin-top: -260px;
     width: 100vw;
-    filter:brightness(.5);
+    filter: brightness(.8);
+}
+.post-full-header{
+    background: rgba(255, 255, 255, 0.95);
+    position: relative;
+    z-index: 100;
+    border-bottom: 2px solid;
+    max-width: 1128px;
+}
+.post-full-content{
+    margin-top: -300px;
+    background: rgba(255, 255, 255, 0.95);
+    border-top: 2px solid;
+}
+.inner{
+    max-width: 1128px;
 }
