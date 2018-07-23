@@ -1,0 +1,13 @@
+<nav class="site-nav">
+    <div class="site-nav-left container">
+        {{#if @blog.navigation}}
+            <a class="brand-logo" href="{{@blog.url}}">
+                {{#if @blog.logo}}
+                    <img class="logi-img" src="{{@blog.logo}}"/>
+                {{/if}}
+                <span class="site-nav-logo">{{@blog.title}}</span>
+            </a>
+            {{navigation}}
+        {{/if}}
+    </div>
+</nav>

@@ -1,0 +1,89 @@
+{{!-- 首页文章循环 --}}
+<div class="index-article-box container">
+    <div class="article-left-box">
+        {{! 文章列表的循环 }}
+        {{#foreach posts}}
+            <div class="articale-item-box color-black">
+                <div class="articale-item-bcontent">
+                    <div class="aib-content">
+                        {{!-- 文章图片 --}}
+                        <div class="artical-img-box middle-center">
+                            {{#if feature_image}}
+                            <img src="{{feature_image}}" alt="" class="artical-img">
+                            {{else}}
+                            <img src="{{asset "images/default.png"}}" alt="" class="artical-img">
+                            {{/if}}
+                        </div>
+                        <div class="article-txt-box">
+                            {{!-- 文章标题 --}}
+                            <a  href="{{url}}" class="title">
+                                {{title}}
+                            </a>
+                            <div class="aticle-txt color-gray">
+                                {{!-- 文章内容 --}}
+                                <div class="txt">
+                                    {{excerpt}}
+                                </div>
+                                <div class="aib-user color-gray">
+                                    {{!-- 作者 --}}
+                                    {{#author}}
+                                        <i class="icon-pen"></i>
+                                        &nbsp;<a href="{{url}}" class="user-name color-gray">{{name}}</a>
+                                    {{/author}}
+                                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                    {{!-- 时间 --}}
+                                    <span><i class="icon-time"></i>&nbsp;{{date published_at timeago="true"}}</span>
+                                    {{!-- 文章标签 --}}
+                                    <span class="aib-tages">
+                                        {{#if tags}}
+                                            {{#foreach tags}}
+                                            <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+                                            <a href="{{url}}" target="_blank" class="aib-tag-item color-blue">{{name}}</a>
+                                            {{/foreach}}
+                                        {{/if}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{!-- 高斯模糊背景图片 --}}
+                {{!-- <div class="articale-item-box-bg">
+                    {{#if feature_image}}
+                        <img src="{{feature_image}}">
+                    {{else}}
+                        <img src="{{asset "images/default.png"}}" >
+                    {{/if}}
+                </div> --}}
+            </div>
+        {{/foreach}}
+        {{ pagination}}
+        <br>
+    </div>
+    <div class="article-right-box">
+        <div class="ar-item-box clearfix personal">
+            <div class="ar-item-user-msg-box middle-center c-pointer">
+                <div class="ar-item-personal-msg middle-center">个人信息</div>
+                <div class="ar-item-h-box">
+                    <img class="ar-item-user-head" src="{{asset "images/default.png"}}" alt="" srcset="">
+                </div>
+                <div class="ar-item-user-name">何彬 | 男 | 成都</div>
+                <div class="ar-item-user-zhiye">web前端程序员</div>
+                <div class="ar-item-user-contact middle-center">
+                    <a href="https://github.com/mrbin1573" target="_blank" title="github地址" class="contact-item icon-github"></a>
+                    <a href="https://blog.csdn.net/qq_23260639" target="_blank" title="CSDN地址" class="contact-item icon-csdn"></a>
+                    <span title="1573406407@qq.com" class="contact-item icon-mail"></span>
+                    {{!-- <span title="https://blog.csdn.net/qq_23260639" class="contact-item icon-qq"></span> --}}
+                    {{!-- <span title="掘金" class="txt icon-juejin middle-center"></span>
+                    <span title="简书" class="txt icon-jianshu middle-center"></span> --}}
+                </div>
+            </div>
+        </div>
+        <div class="ar-item-box clearfix">
+            {{ tag_cloud limit="all"}}
+        </div>
+        <div class="ar-item-box clearfix">
+            <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_uv"></span> 次</span>
+        </div>
+    </div>
+</div>

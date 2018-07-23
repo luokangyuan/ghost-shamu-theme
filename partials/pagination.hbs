@@ -1,0 +1,30 @@
+{{! 分页栏}}
+<div class="paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            {{#if prev}}
+            <a href="{{page_url prev}}" class="left btn-floating btn-large waves-effect waves-light">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            {{else}}
+            <a class="left btn-floating btn-large disabled">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            {{/if}}
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">第 {{page}} 页 / 共 {{pages}} 页</div>
+        </div>
+        <div class="col s6 m4 l4">
+            {{#if next}}
+            <a href="{{page_url next}}" class="right btn-floating btn-large waves-effect waves-light">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            {{else}}
+            <a class="right btn-floating btn-large disabled">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            {{/if}}
+        </div>
+    </div>
+</div>
