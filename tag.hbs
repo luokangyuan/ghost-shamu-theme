@@ -11,8 +11,9 @@
             <h2 class="site-description">
                 {{#if description}}
                     {{description}}
+                    <h2>共 {{plural ../pagination.total empty='posts' singular='% 篇文章' plural='% 篇文章'}}</h2>
                 {{else}}
-                    A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
+                    <h2>共 {{plural ../pagination.total empty='posts' singular='% 篇文章' plural='% 篇文章'}}</h2>
                 {{/if}}
             </h2>
         </div>
