@@ -23,6 +23,16 @@ $(function(){
             prevEl: '.swiper-button-prev',
         },
     });
+
+    //搜索按钮自动聚焦
+    $('.icon-search').parent().hover(
+        function(){
+            $(this).find('.search-input').focus();
+        },
+        function(){
+            $(this).find('.search-input').blur();
+        }
+    );
 });
 // 随机颜色
 var colorArr = [
