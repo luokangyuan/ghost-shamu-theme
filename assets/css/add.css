@@ -43,6 +43,12 @@
 .c-pointer {
   cursor: pointer;
 }
+.no-shadow {
+  box-shadow: none !important;
+}
+.no-border {
+  border: none !important;
+}
 .banner {
   width: 100%;
   height: 100vh;
@@ -162,10 +168,11 @@
   top: 55px;
   left: 0px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: .1s;
   visibility: hidden;
   opacity: 0;
-  transition: .2s;
 }
 .site-header .site-nav .site-nav-left .nav .nav- .sub-menu-box .sub-content {
   display: flex;
@@ -180,10 +187,16 @@
   height: 300px;
   overflow: hidden;
   flex-shrink: 0;
+  border: 1px solid #bbbbbb;
+  cursor: pointer;
 }
 .site-header .site-nav .site-nav-left .nav .nav- .sub-menu-box .sub-content .left-pic > img {
+  transition: 0.3s;
   width: 300px;
   height: 300px;
+}
+.site-header .site-nav .site-nav-left .nav .nav- .sub-menu-box .sub-content .left-pic:hover > img {
+  transform: scale(1.1);
 }
 .site-header .site-nav .site-nav-left .nav .nav- .sub-menu-box .sub-content .right-content {
   flex-shrink: 0;
@@ -236,11 +249,25 @@
   width: 100%;
   max-height: 300px;
   overflow-y: auto;
-  padding: 5px 20px;
   background: #fff;
   color: #000;
-  box-shadow: 0 5px 15px #eeeeee;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0 2px 10px #f0f0f0;
   font-size: 18px;
+}
+.site-header .site-nav .site-nav-left .nav .nav- .sub-menu-box .sub-content .right-content .search-result-box .res-title {
+  padding: 5px 20px;
+  margin: 0;
+  border-bottom: 1px solid #f3f3f3;
+}
+.site-header .site-nav .site-nav-left .nav .nav- .sub-menu-box .sub-content .right-content .search-result-box > a {
+  padding: 0 20px;
+  color: #000;
+  height: 30px;
+  line-height: 30px;
+}
+.site-header .site-nav .site-nav-left .nav .nav- .sub-menu-box .sub-content .right-content .search-result-box > a:hover {
+  background: #dedede;
 }
 .site-header {
   margin: 0;
@@ -595,7 +622,7 @@
   max-width: 1128px;
 }
 .post-full-content {
-  margin-top: -300px;
+  margin-top: -400px;
   background: rgba(255, 255, 255, 0.95);
   border-top: 2px solid;
 }

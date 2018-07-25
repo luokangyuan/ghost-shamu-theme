@@ -69,6 +69,9 @@
                     </div>
                 </li>
                 <li class="nav- nav-current" role="menuitem">
+                    <a href="http://luokangyuan.com/" target="_blank">后端</a>
+                </li>
+                <li class="nav- nav-current" role="menuitem">
                     <a href="http://localhost:2368/">资源</a>
                     <div class="sub-menu-box">
                         <div class="inner sub-content">
@@ -177,24 +180,21 @@
                     <a href="javascript:;" class="icon-search"></a>
                     <div class="sub-menu-box">
                         <div class="inner sub-content">
-                            <div class="left-pic middle-center">
+                            <div class="left-pic middle-center no-border">
                                 <img src="{{asset "images/search.png"}}" alt="" srcset="">
                             </div>
                             <div class="right-content">
-                                <input class="search-input" type="text" placeholder="请输入关键词">
-                                <div class="search-result-box">
-                                    <h5>asdfafds</h5>
-                                    <h5>asdfafds</h5>
-                                    <h5>asdfafds</h5>
-                                    <h5>asdfafds</h5>
-                                    <h5>asdfafds</h5>
-                                    <h5>asdfafds</h5>
-                                    <h5>asdfafds</h5>
-                                    <h5>asdfafds</h5>
-                                    <h5>asdfafds</h5>
-                                    <h5>asdfafds</h5>
-                                    <h5>asdfafds</h5>
-                                </div>
+                                <form>
+                                    <input class="search-input"  id="search-field" type="text" placeholder="请输入关键词">
+                                    {{!-- <input type="submit" value="search"> --}}
+                                </form>
+                                <section id="results" class="search-result-box">
+                                    {{!-- <h5 class='res-title'>共4 篇相关文章</h5>
+                                    <a id="gh-5b584226cd87821cbcc4e5fa" class="gh-search-item" href="/ce-shi/">测试</a>
+                                    <a id="gh-5b5553776bd2bf2eac3d7c56" class="gh-search-item" href="/welcome/">Welcome to Ghost</a>
+                                    <a id="gh-5b5553776bd2bf2eac3d7c52" class="gh-search-item" href="/using-tags/">Organising your content with tags</a>
+                                    <a id="gh-5b5553776bd2bf2eac3d7c54" class="gh-search-item" href="/the-editor/">Using the Ghost editor</a> --}}
+                                </section>
                             </div>
                         </div>
                     </div>

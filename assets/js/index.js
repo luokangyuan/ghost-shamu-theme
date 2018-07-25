@@ -27,12 +27,23 @@ $(function(){
     //搜索按钮自动聚焦
     $('.icon-search').parent().hover(
         function(){
-            $(this).find('.search-input').focus();
+            $('#search-field').focus();
         },
         function(){
-            $(this).find('.search-input').blur();
+            $('#search-field').blur();
         }
     );
+
+    //搜索插件使用
+    $("#search-field").ghostHunter({
+        results : "#results",
+        includepages : true,//包含静态页面
+        info_template: "<h5 class='res-title'>共{{amount}} 篇相关文章</h5>",
+        onKeyUp : true,
+        result_template:"<a id='gh-{{ref}}' class='gh-search-item' href='{{link}}'>{{title}}</a>",
+    });
+ 
+
 });
 // 随机颜色
 var colorArr = [
