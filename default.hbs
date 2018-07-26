@@ -17,6 +17,19 @@
     {{!-- 添加的css --}}
     <link rel="stylesheet" type="text/css" href="{{asset "css/add.css"}}" />
 
+    {{!-- 代码高亮 --}}
+    {{!-- 默认主题 --}}
+    {{!-- 
+    <link rel="stylesheet" type="text/css" href="{{asset "css/prism-coy.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/prism-dark.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/prism-funky.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/prism-okaidia.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/prism.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/prism-twilight.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/prism-solarizedlight.css"}}" />
+    --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/prism-tomorrow.css"}}" />
+
     {{!-- This tag outputs SEO meta+structured data and other important settings --}}
     {{ghost_head}}
 
@@ -29,7 +42,7 @@
         {{{body}}}
 
         {{!-- The footer at the very bottom of the screen --}}
-        <footer class="site-footer outer">
+        {{!-- <footer class="site-footer outer">
             <div class="site-footer-content inner">
                 <section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
                 <nav class="site-footer-nav">
@@ -39,8 +52,12 @@
                     <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
                 </nav>
             </div>
-        </footer>
+        </footer> --}}
 
+        {{> footer}}
+        
+        {{!-- 返回顶部 --}}
+        {{> to-top}}
     </div>
 
     {{!-- The big email subscribe modal content --}}
@@ -60,15 +77,17 @@
 
     {{!-- jQuery + Fitvids, which makes all video embeds responsive --}}
     <script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous">
+        src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
     </script>
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/swiper.min.js"}}"></script>
+    <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
     {{!-- 搜索 --}}
     <script type="text/javascript" src="{{asset "ghostHunter/dist/jquery.ghosthunter.js"}}"></script>
-    <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
+
+    {{!-- 代码高亮 --}}
+    <script src="{{asset "js/prism.js"}}"></script>
+
 
     {{#if pagination.pages}}
     <script>
@@ -85,9 +104,5 @@
 
     {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
     {{ghost_foot}}
-
-
-    {{!-- 访问量统计 --}}
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>

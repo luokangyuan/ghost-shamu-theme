@@ -1,0 +1,30 @@
+
+{{!-- The footer at the very bottom of the screen --}}
+{{!-- <footer class="site-footer outer">
+		<div class="site-footer-content inner">
+				<section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
+				<span>本博客基于Ghost自带默认主题开发，所有素材皆来自于互联网，若有版权问题，请联系本人</span>
+				<nav class="site-footer-nav">
+						<a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+				</nav>
+		</div>
+</footer> --}}
+
+<footer class="blog-footer-new">
+	<div class="footer-container inner">
+		<div class="declaration">本网站基于Ghost 1.X 默认主题开发，素材均来自于互联网，若有版权问题，请联系本人 ( QQ：1573406407 )</div>
+		<div class="friend-link">
+			<span>友情链接：</span>
+			<a href="http://luokangyuan.com/" target="_blank">码酱博客</a>
+			<a href="https://ghost.org/zh_CN/" target="_blank">Ghost官网</a>
+			<a href="http://www.ghostchina.com/" target="_blank">Ghost中文网</a>
+		</div>
+		<div class="copyright">
+			<span><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</span>
+			<span id="busuanzi_container_site_pv">&nbsp;&nbsp;&nbsp;本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+		</div>
+	</div>
+
+</footer>
+	{{!-- 访问量统计 --}}
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

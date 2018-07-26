@@ -1,9 +1,16 @@
 $(function(){
+    var friendLinkParent = $('.friend-link');//友情链接挂载ele
+
+
     //设置日历
     setBannerDate();
     //设置颜色随机
-    colorRadom($('.contact-item'), 'color');          
-    colorRadom($('.post-full-header,.post-full-content'), 'border-color');          
+    colorRadom($('.contact-item'), 'color'); 
+    colorRadom($('.post-full-header,.post-full-content'), 'border-color');    //文章标题和内容之间的线 
+    colorRadom($('.blog-footer-new'), 'border-color'); //底部
+    colorRadom($('.to-top-container'), 'background-color'); //返回顶部
+    colorRadom($('.ar-tag-items'), 'background-color'); //云标签
+
     // 首页背景banner
     var mySwiper = new Swiper('.swiper-container', {
         loop: true,
@@ -42,9 +49,81 @@ $(function(){
         onKeyUp : true,
         result_template:"<a id='gh-{{ref}}' class='gh-search-item' href='{{link}}'>{{title}}</a>",
     });
- 
+
+    //=============底部信息=============
+
+    // 说明
+    if(declarationTxt != ''){
+        $('.declaration').text(declarationTxt);
+    }
+
+
+    //挂载友情链接
+    if(linkArr.length > 0){
+        friendLinkParent.find('a').remove();
+        for(var i = 0; i < linkArr.length; i++){
+            friendLinkParent.append('<a href="'+ linkArr[i].url +'" target="_blank">'+ linkArr[i].name +'</a>&nbsp;&nbsp;');
+        }
+    }
+
+
+    //返回顶部
+    var windowTop = false;//避免多次执行回到顶部
+    $('.to-top-container').hover(function(){
+        if(!windowTop){
+            $('body,html').animate({scrollTop: 0}, 300);
+            console.log('s')
+            windowTop = true;
+        }
+    });
+
+    var toTopBtn = $('.to-top-container');
+    var persnalPane = $('.article-right-box .personal');
+    //监听滚动
+    var aTop;
+    $(window).scroll(function(){
+        var topSize = $(window).scrollTop();
+        aTop = topSize;
+        // console.log(topSize);
+
+        //回到顶部判断
+        if(topSize > 630){
+            toTopBtn.addClass('show');
+            windowTop = false;
+        }else{
+            toTopBtn.removeClass('show');
+        }
+
+        //我的资料是否收起 
+        if(topSize >= 499){
+            var leftPosition = $('.article-right-box').offset().left;
+            // persnalPane.addClass('ar-item-hide');
+            $('.article-right-box').addClass('position-fixed').css('left', leftPosition);
+        }else{
+            // persnalPane.removeClass('ar-item-hide');
+            $('.article-right-box').removeClass('position-fixed');
+        }
+
+    });
+
+
+    //鼠标覆盖个人简历
+    $('.personal').hover(
+        function () {
+            // if (aTop > 499) {
+                $(this).removeClass('ar-item-hide');
+            // }
+        },
+        function () {
+            // if (aTop > 499) {
+                $(this).addClass('ar-item-hide');
+            // }
+        }
+    );
+
 
 });
+
 // 随机颜色
 var colorArr = [
     '#663ab6',
@@ -53,7 +132,6 @@ var colorArr = [
     '#9b27af',
     '#2195f2',
     '#009587',
-    '#9d9d9d',
     '#4bae4f',
     '#fe9700',
     '#fe5622',

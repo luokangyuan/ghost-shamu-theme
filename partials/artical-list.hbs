@@ -61,7 +61,7 @@
         <br>
     </div>
     <div class="article-right-box">
-        <div class="ar-item-box clearfix personal">
+        <div class="ar-item-box clearfix personal ar-item-hide">
             <div class="ar-item-user-msg-box middle-center c-pointer">
                 <div class="ar-item-personal-msg middle-center">个人信息</div>
                 <div class="ar-item-h-box">
@@ -79,11 +79,13 @@
                 </div>
             </div>
         </div>
-        {{!-- <div class="ar-item-box clearfix">
-            {{ tag_cloud limit="all"}}
-        </div> --}}
-        <div class="ar-item-box clearfix">
-            <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_uv"></span> 次</span>
+        <div class="ar-item-box clearfix tags">
+            {{! Tag Cloud }}
+            {{#get "tags" limit="all" include="count.posts" order="count.posts desc" }}
+                {{#foreach tags}}
+                    <a href="/tag/{{slug}}" class="tag-item ar-tag-items">{{name}} ({{count.posts}})</a>
+                {{/foreach}}
+            {{/get}}
         </div>
     </div>
 </div>
