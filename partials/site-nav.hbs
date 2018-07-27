@@ -4,18 +4,16 @@
             <a class="brand-logo" href="{{@blog.url}}">
                 {{#if @blog.logo}}
                     <img class="logi-img" src="{{@blog.logo}}"/>
-                {{else}}
-                    <img class="logi-img" src="{{@blog.logo}}"/>
-                    <span class="site-nav-logo">{{@blog.title}}</span>
                 {{/if}}
+                <span class="site-nav-logo">{{@blog.title}}</span>
             </a>
             {{!-- {{navigation}} --}}
             <ul class="nav" role="menu">
                 <li class="nav- nav-current" role="menuitem">
-                    <a href="http://localhost:2368/">首页</a>
+                    <a href="{{@blog.url}}">首页</a>
                 </li>
                 <li class="nav- nav-current" role="menuitem">
-                    <a href="http://localhost:2368/">前端</a>
+                    <a href="javascript:;">前端</a>
                     <div class="sub-menu-box">
                         <div class="inner sub-content">
                             <div class="left-pic middle-center">
@@ -70,9 +68,54 @@
                 </li>
                 <li class="nav- nav-current" role="menuitem">
                     <a href="http://luokangyuan.com/" target="_blank">后端</a>
+                    <div class="sub-menu-box">
+                        <div class="inner sub-content">
+                            <div class="left-pic middle-center">
+                                <img src="{{asset "images/houtai.png"}}" alt="" srcset="">
+                            </div>
+                            <div class="right-content">
+                                <a href="http://hackbin.cn/tag/html/" class="mune-item">
+                                    <div class="img-box middle-center">
+                                        <img src="{{asset "images/java.png"}}" alt="" srcset="">
+                                    </div>
+                                    <span>Java</span>
+                                </a>
+                                <a href="http://hackbin.cn/tag/css/" class="mune-item">
+                                    <div class="img-box middle-center">
+                                        <img src="{{asset "images/mybatis.png"}}" alt="" srcset="">
+                                    </div>
+                                    <span>Mybatis</span>
+                                </a>
+                                <a href="http://hackbin.cn/tag/javascript/" class="mune-item">
+                                    <div class="img-box middle-center">
+                                        <img src="{{asset "images/spring.png"}}" alt="" srcset="">
+                                    </div>
+                                    <span>Spring</span>
+                                </a>
+                                <a href="http://hackbin.cn/tag/jquery/" class="mune-item">
+                                    <div class="img-box middle-center">
+                                        <img src="{{asset "images/springBoot.png"}}" alt="" srcset="">
+                                    </div>
+                                    <span>SpringBoot</span>
+                                </a>
+                                <a href="http://hackbin.cn/tag/vue/" class="mune-item">
+                                    <div class="img-box middle-center">
+                                        <img src="{{asset "images/springCloud.png"}}" alt="" srcset="">
+                                    </div>
+                                    <span>SpringCloud</span>
+                                </a>
+                                <a href="http://hackbin.cn/tag/node/" class="mune-item">
+                                    <div class="img-box middle-center">
+                                        <img src="{{asset "images/linux.png"}}" alt="" srcset="">
+                                    </div>
+                                    <span>Linux</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav- nav-current" role="menuitem">
-                    <a href="http://localhost:2368/">资源</a>
+                    <a href="javascript:;">资源</a>
                     <div class="sub-menu-box">
                         <div class="inner sub-content">
                             <div class="left-pic middle-center">
@@ -120,7 +163,7 @@
                     </div>
                 </li>
                 <li class="nav- nav-current" role="menuitem">
-                    <a href="http://localhost:2368/">规范</a>
+                    <a href="javascript:;">规范</a>
                     <div class="sub-menu-box">
                         <div class="inner sub-content">
                             <div class="left-pic middle-center">
@@ -174,14 +217,14 @@
                     </div>
                 </li>
                 <li class="nav- nav-current" role="menuitem">
-                    <a href="http://localhost:2368/">随笔</a>
+                    <a href="http://hackbin.cn/tag/sui-bi/">随笔</a>
                 </li>
                 <li class="nav- nav-current middle-center" role="menuitem">
                     <a href="javascript:;" class="icon-search"></a>
                     <div class="sub-menu-box">
                         <div class="inner sub-content">
                             <div class="left-pic middle-center no-border">
-                                <img src="{{asset "images/search.png"}}" alt="" srcset="">
+                                <img src="{{asset "images/search1.png"}}" alt="" srcset="">
                             </div>
                             <div class="right-content">
                                 <form>

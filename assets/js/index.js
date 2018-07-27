@@ -10,6 +10,7 @@ $(function(){
     colorRadom($('.blog-footer-new'), 'border-color'); //底部
     colorRadom($('.to-top-container'), 'background-color'); //返回顶部
     colorRadom($('.ar-tag-items'), 'background-color'); //云标签
+    colorRadom($('.ar-item-title'), 'border-color'); //右边标题
 
     // 首页背景banner
     var mySwiper = new Swiper('.swiper-container', {
@@ -120,7 +121,6 @@ $(function(){
             // }
         }
     );
-
 
 });
 

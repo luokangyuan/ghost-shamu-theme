@@ -7,12 +7,18 @@
                 <div class="articale-item-bcontent">
                     <div class="aib-content">
                         {{!-- 文章图片 --}}
-                        <div class="artical-img-box middle-center">
-                            {{#if feature_image}}
+                        <div class="artical-img-box middle-center"
+                            {{#if feature_image}}" 
+                                style="background-image: url({{feature_image}})"
+                            {{else}}
+                                style="background-image: url({{asset "images/default.png"}})"
+                            {{/if}}
+                        >
+                            {{!-- {{#if feature_image}}
                             <img src="{{feature_image}}" alt="" class="artical-img">
                             {{else}}
                             <img src="{{asset "images/default.png"}}" alt="" class="artical-img">
-                            {{/if}}
+                            {{/if}} --}}
                         </div>
                         <div class="article-txt-box">
                             {{!-- 文章标题 --}}
@@ -61,7 +67,8 @@
         <br>
     </div>
     <div class="article-right-box">
-        <div class="ar-item-box clearfix personal ar-item-hide">
+        {{!-- 个人信息 --}}
+        {{!-- <div class="ar-item-box personal ar-item-hide">
             <div class="ar-item-user-msg-box middle-center c-pointer">
                 <div class="ar-item-personal-msg middle-center">个人信息</div>
                 <div class="ar-item-h-box">
@@ -73,13 +80,17 @@
                     <a href="https://github.com/mrbin1573" target="_blank" title="github地址" class="contact-item icon-github"></a>
                     <a href="https://blog.csdn.net/qq_23260639" target="_blank" title="CSDN地址" class="contact-item icon-csdn"></a>
                     <span title="1573406407@qq.com" class="contact-item icon-mail"></span>
-                    {{!-- <span title="https://blog.csdn.net/qq_23260639" class="contact-item icon-qq"></span> --}}
-                    {{!-- <span title="掘金" class="txt icon-juejin middle-center"></span>
-                    <span title="简书" class="txt icon-jianshu middle-center"></span> --}}
+                    <span title="https://blog.csdn.net/qq_23260639" class="contact-item icon-qq"></span>
+                    <span title="掘金" class="txt icon-juejin middle-center"></span>
+                    <span title="简书" class="txt icon-jianshu middle-center"></span>
                 </div>
             </div>
-        </div>
-        <div class="ar-item-box clearfix tags">
+        </div> --}}
+        {{!-- 云标签 --}}
+        <div class="ar-item-box tags">
+            <div class="ar-item-title">
+                云标签
+            </div>
             {{! Tag Cloud }}
             {{#get "tags" limit="all" include="count.posts" order="count.posts desc" }}
                 {{#foreach tags}}
@@ -87,5 +98,40 @@
                 {{/foreach}}
             {{/get}}
         </div>
+
+        {{!-- 作者列表 --}}
+        <div class="ar-item-box">
+            <div class="ar-item-title">
+                <span>作者们</span>
+                <a href="https://jq.qq.com/?_wv=1027&k=5lq4CQD" target="_blank" class="become-user">加入他们</a>
+            </div>
+            <div  class="ar-users-list">
+                {{#get "users" include="count.posts" order="count.posts desc"}}
+                    {{#foreach users}}
+                        <a href="/author/{{slug}}" class="ar-user-item">
+                            {{#if profile_image}}
+                                <img src="{{profile_image}}" alt="" class="head">
+                            {{else}}
+                                <img src="{{asset "images/default.png"}}" alt="" class="head">
+                            {{/if}}
+                            <div class="user-msg">
+                                <div class="name-position">
+                                    <span>{{name}}</span>
+                                    <small>( {{count.posts}} 篇文章 ) </small>
+                                </div>
+                                <div class="bio color-gray">
+                                    {{#if bio}}
+                                        {{bio}}
+                                    {{else}}
+                                        bug太多，懒得填写了
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </a>
+                    {{/foreach}}
+                {{/get}}
+            </div>
+        </div>
+
     </div>
 </div>

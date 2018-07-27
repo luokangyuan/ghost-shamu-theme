@@ -1,8 +1,8 @@
 {
     "name": "shamu",
-    "description": "The default personal blogging theme for Ghost. Beautiful, minimal and responsive.",
-    "demo": "https://demo.ghost.io",
-    "version": "2.3.3",
+    "description": "根据Ghost博客自带主题进行开发的新主题",
+    "demo": "http://hackbin.cn/",
+    "version": "1.0.0",
     "engines": {
         "ghost": ">=1.2.0"
     },
@@ -16,9 +16,9 @@
       "zip": "gulp zip"
     },
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org"
+        "name": "何彬",
+        "email": "1573406407@qq.com",
+        "url": "http://hackbin.cn/"
     },
     "gpm": {
         "type": "theme",

@@ -8,7 +8,7 @@
 // 变量
 @animateTime:.3s;
 @shadow:0 0 5px rgba(0, 0, 0, 0.2);
-
+@lineColor:#dddddd;
 //动画
 //下拉菜单
 @keyframes downShow{
@@ -77,7 +77,7 @@
     height: 100vh;
     overflow: hidden;
     .swiper-container{
-        // filter: brightness(.85);
+        // filter: grayscale(.85);
         .swiper-wrapper{
             .swiper-slide{
                 >img{
@@ -427,16 +427,18 @@
                     width: 100%;
                     height: 150px;
                     display: flex;
-                    // border-bottom: 1px solid rgb(221, 221, 221);
+                    // border-bottom: 1px solid @lineColor;
                     .artical-img-box{
                         width: 130px;
                         height: 130px;
                         overflow: hidden;
                         border-radius: 2px;
                         background: #f0f0f0;
+                        background-size: cover;
+                        background-position: 50% 50%;
                         // border: 1px solid #f0f0f0;
                         .artical-img{
-                            // width: 100%;
+                            min-width: 100%;
                             height: 100%;
                         }
                     }
@@ -453,7 +455,7 @@
                             overflow: hidden;
                             text-overflow: ellipsis;
                             white-space: nowrap;
-                            border-bottom: 1px solid rgb(221, 221, 221);
+                            border-bottom: 1px solid @lineColor;
                         }
                         .aticle-txt{
                             height: 86px;
@@ -517,9 +519,33 @@
             margin-bottom: 20px;
             box-shadow: @shadow;
             background: rgba(255,255,255,.95);
-            padding: 10px 20px;
+            padding: 20px 20px 10px;
             transition: @animateTime;
             overflow: hidden;
+            .ar-item-title{
+                font-size: 16px;
+                border-left: 5px solid;
+                margin-left: -20px;
+                padding-left: 15px;
+                height: 20px;
+                line-height: 20px;
+                font-weight: bold;
+                margin-bottom: 15px;
+                .become-user{
+                    float: right;
+                    padding: 1px 10px;
+                    border-radius: 15px;
+                    font-size: 12px;
+                    background: rgb(230, 8, 8);
+                    transition: @animateTime;
+                    color: #fff;
+                    cursor: pointer;
+                    &:hover{
+                        background: red;
+                        transform: scale(1.02);
+                    }
+                }
+            }
             .ar-item-user-msg-box{
                 transition: @animateTime;
                 transform: translateY(-30px);
@@ -546,8 +572,8 @@
             .ar-tag-items{
                 float: left;
                 font-weight: 500;
-                font-size: 16px;
-                padding: 2px 15px;
+                font-size: 14px;
+                padding: 2px 10px;
                 color: #fff;
                 border-radius: 16px;
                 transition: @animateTime;
@@ -588,7 +614,7 @@
                 }
                 .ar-item-user-contact{
                     width: 100%;
-                    border-top: 1px solid #dedede;
+                    border-top: 1px solid @lineColor;
                     margin-top: 15px;
                     height: 60px;
                     display: flex;
@@ -630,13 +656,90 @@
                     }
                 }
             }
-            #busuanzi_container_site_pv{
-                font-weight: bold;
-            }
             &.tags{
                 padding-left: 10px;
                 padding-bottom: 10px;
                 padding-top: 20px;
+                .ar-item-title{
+                    margin-left: -10px;
+                }
+            }
+            &.ar-item-opts-panel{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                .opts-item{
+                    margin-top: 10px;
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    color: #000;
+                    flex-shrink: 0;
+                    text-decoration: none;
+                    cursor: pointer;
+                    >img{
+                        width: 110px;
+                        height: 110px;
+                        padding:10px;
+                        border-radius: 50%;
+                        transition: @animateTime;
+                    }
+                    &:hover{
+                        >img{
+                            transform: scale(1.02);
+                            box-shadow: @shadow;
+                        }
+                    }
+                }
+            }
+            .ar-users-list{
+                display: flex;
+                flex-direction: column;
+                .ar-user-item{
+                    display: flex;
+                    align-items: center;
+                    // height: 40px;
+                    text-decoration: none;
+                    color: #000;
+                    padding: 10px 0;
+                    overflow: hidden;
+                    transition: @animateTime;
+                    &:hover{
+                        transform: translateX(-5px);
+                        background: linear-gradient(to right, transparent, #eeeeee, transparent);
+                        .head{
+                            filter: grayscale(0);
+                        }
+                    }
+                    &:not(:last-child){
+                        border-bottom: 1px dashed @lineColor;
+                    }
+                    .user-msg{
+                        width: calc(~'100% - 50px');
+                        margin-left: 10px;
+                        .name-position{
+                            line-height: 16px;
+                            font-size: 16px;
+                        }
+                        .bio{
+                            width: 100%;
+                            font-size: 12px;
+                            line-height: 16px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                    }
+                    
+                    .head{
+                        transition: @animateTime;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        filter: grayscale(.4);
+                    }
+                }
             }
         }
         &.position-fixed{
@@ -673,7 +776,7 @@
     margin-left: calc(~'50% - 50vw');
     margin-top: -260px;
     width: 100vw;
-    filter: brightness(.8);
+    filter: grayscale(.8);
 }
 .post-full-header{
     background: rgba(255, 255, 255, 0.95);
