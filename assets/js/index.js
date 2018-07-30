@@ -6,7 +6,7 @@ $(function(){
     setBannerDate();
     //设置颜色随机
     colorRadom($('.contact-item'), 'color'); 
-    colorRadom($('.post-full-header,.post-full-content'), 'border-color');    //文章标题和内容之间的线 
+    // colorRadom($('.post-full-header,.post-full-content'), 'border-color');    //文章标题和内容之间的线 
     colorRadom($('.blog-footer-new'), 'border-color'); //底部
     colorRadom($('.to-top-container'), 'background-color'); //返回顶部
     colorRadom($('.ar-tag-items'), 'background-color'); //云标签
@@ -69,13 +69,8 @@ $(function(){
 
 
     //返回顶部
-    var windowTop = false;//避免多次执行回到顶部
-    $('.to-top-container').hover(function(){
-        if(!windowTop){
-            $('body,html').animate({scrollTop: 0}, 300);
-            console.log('s')
-            windowTop = true;
-        }
+    $('.to-top-container').click(function(){
+        $('body,html').animate({scrollTop: 0}, 300);
     });
 
     var toTopBtn = $('.to-top-container');
@@ -90,17 +85,16 @@ $(function(){
         //回到顶部判断
         if(topSize > 630){
             toTopBtn.addClass('show');
-            windowTop = false;
         }else{
             toTopBtn.removeClass('show');
         }
 
         //我的资料是否收起 
-        if(topSize >= 499){
+        if(topSize >= 499 && $('.article-right-box').length > 0){
             var leftPosition = $('.article-right-box').offset().left;
             // persnalPane.addClass('ar-item-hide');
             $('.article-right-box').addClass('position-fixed').css('left', leftPosition);
-        }else{
+        }else if(topSize < 499 && $('.article-right-box').length > 0){
             // persnalPane.removeClass('ar-item-hide');
             $('.article-right-box').removeClass('position-fixed');
         }

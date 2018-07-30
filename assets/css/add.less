@@ -7,7 +7,8 @@
 
 // 变量
 @animateTime:.3s;
-@shadow:0 0 5px rgba(0, 0, 0, 0.2);
+// @shadow:0 0 5px rgba(0, 0, 0, 0.2);
+@shadow:8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
 @lineColor:#dddddd;
 //动画
 //下拉菜单
@@ -152,7 +153,8 @@
                     background: #000;
                 }
                 .logi-img{
-                    height: 40px;
+                    height: 35px;
+                    margin-right: 5px;
                 }
                 .site-nav-logo{
                     margin: 0;
@@ -774,9 +776,8 @@
 // 文章详情
 .post-full-image{
     margin-left: calc(~'50% - 50vw');
-    margin-top: -260px;
+    // margin-top: -260px;
     width: 100vw;
-    filter: grayscale(.8);
 }
 .post-full-header{
     background: rgba(255, 255, 255, 0.95);
@@ -786,9 +787,31 @@
     max-width: 1128px;
 }
 .post-full-content{
-    margin-top: -400px;
-    background: rgba(255, 255, 255, 0.95);
-    border-top: 2px solid;
+    margin-top: -530px;
+    padding-top: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    transition: @animateTime;
+    &:hover{
+        background: rgba(255, 255, 255, .95);
+    }
+    .new-post-header{
+        border-bottom: 1px dashed #a0a0a0;
+        margin: 20px 0;
+        .post-full-title{
+            text-align: center;
+            margin: 0;
+        }
+        .post-full-meta{
+            margin: 5px 0 15px;
+            .post-full-meta-date{
+                color: #000;
+            }
+            a{
+                color: #3eb0ef;
+                box-shadow: none;
+            }
+        }
+    }
 }
 .inner{
     max-width: 1128px;
@@ -828,10 +851,75 @@
     transform: translateY(0px);
     border-radius: 50%;
     cursor:pointer;
+    box-shadow: @shadow;
+    transition: @animateTime;
     &.show{
         opacity:1;
         visibility: visible;
         transform: translateY(-10px);
         animation: toTopShow @animateTime;
     }
+}
+
+.kg-card-markdown{
+    margin-top: 20px;
+}
+.post-card,.post-card-image-link,.read-next-card{
+    border-radius: 0;
+}
+.read-next-card:before{
+    border-radius: 0px;
+}
+.post-full-footer{
+    margin-top: 20px;
+    max-width: 100%;
+    padding: 3vw 100px 6vw;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.no-image .post-full-content{
+    padding-top: 20px;
+}
+
+.new-progress{
+    position: fixed;
+    top: 0;
+    color: #fff;
+    z-index: 100000000;
+}
+.floating-header{
+    background: #fff;
+    box-shadow: @shadow;
+    .floating-header-content{
+        display: flex;
+        height: 60px;
+        align-items: center;
+        .floating-header-logo{
+            height: 60px;
+            padding: 0 20px;
+            border-right: 1px solid #dedede;
+            border-left: 1px solid #dedede;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: @animateTime;
+            img{
+                margin-right: 5px;
+            }
+            &:hover{
+                background: rgba(0, 0, 0, 0.082);
+            }
+        }
+        .floating-header-title{
+            margin-left: 20px;
+        }
+    }
+}
+.kg-card-markdown{
+    word-break: break-all;
+    color: #000;
+}
+.index-top-post{
+    margin: 0 0 20px;
 }

@@ -1,91 +1,121 @@
 {{!-- 首页文章循环 --}}
 <div class="index-article-box container">
     <div class="article-left-box">
-        {{! 文章列表的循环 }}
+
+        {{!-- 推荐文章 --}}
+        {{!-- <article style="display: flex">
+            {{#foreach posts}}
+                {{#if featured limit="3"}}
+                    {{> "post-card"}}
+                {{/if}}
+            {{/foreach}}
+        </article> --}}
+
+        {{!-- 所有文章，包括推荐 --}}
         {{#foreach posts}}
-            <div class="articale-item-box color-black">
-                <div class="articale-item-bcontent">
-                    <div class="aib-content">
-                        {{!-- 文章图片 --}}
-                        <div class="artical-img-box middle-center"
-                            {{#if feature_image}}" 
-                                style="background-image: url({{feature_image}})"
-                            {{else}}
-                                style="background-image: url({{asset "images/default.png"}})"
-                            {{/if}}
-                        >
-                            {{!-- {{#if feature_image}}
-                            <img src="{{feature_image}}" alt="" class="artical-img">
-                            {{else}}
-                            <img src="{{asset "images/default.png"}}" alt="" class="artical-img">
-                            {{/if}} --}}
-                        </div>
-                        <div class="article-txt-box">
-                            {{!-- 文章标题 --}}
-                            <a  href="{{url}}" class="title">
-                                {{title}}
-                            </a>
-                            <div class="aticle-txt color-gray">
-                                {{!-- 文章内容 --}}
-                                <div class="txt">
-                                    {{excerpt}}
-                                </div>
-                                <div class="aib-user color-gray">
-                                    {{!-- 作者 --}}
-                                    {{#author}}
-                                        <i class="icon-pen"></i>
-                                        &nbsp;<a href="{{url}}" class="user-name color-gray">{{name}}</a>
-                                    {{/author}}
-                                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                                    {{!-- 时间 --}}
-                                    <span><i class="icon-time"></i>&nbsp;{{date published_at timeago="true"}}</span>
-                                    {{!-- 文章标签 --}}
-                                    <span class="aib-tages">
-                                        {{#if tags}}
-                                            {{#foreach tags}}
-                                            <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
-                                            <a href="{{url}}" target="_blank" class="aib-tag-item color-blue">{{name}}</a>
-                                            {{/foreach}}
-                                        {{/if}}
-                                    </span>
+            {{#if @first}}
+                <article class="post-card index-top-post">
+                    {{#if feature_image}}
+                        <a class="post-card-image-link" href="{{url}}">
+                            <div class="post-card-image" style="background-image: url({{feature_image}})"></div>
+                        </a>
+                    {{else}}
+                        <a class="post-card-image-link" href="{{url}}">
+                            <div class="post-card-image" style="background-image: url({{asset "images/banner1.jpg"}})"></div>
+                        </a>
+                    {{/if}}
+                    <div class="post-card-content">
+                        <a class="post-card-content-link" href="{{url}}">
+                            <header class="post-card-header">
+                                {{#if primary_tag}}
+                                    <span class="post-card-tags">{{primary_tag.name}}</span>
+                                {{/if}}
+                                <h2 class="post-card-title">{{title}}</h2>
+                            </header>
+                            <section class="post-card-excerpt">
+                                <p>{{excerpt words="33"}}</p>
+                            </section>
+                        </a>
+                        <footer class="post-card-meta">
+
+                            <ul class="author-list">
+                            {{#foreach authors}}
+                                <li class="author-list-item">
+
+                                    <div class="author-name-tooltip">
+                                        {{name}}
+                                    </div>
+
+                                    {{#if profile_image}}
+                                        <a href="{{url}}" class="static-avatar"><img class="author-profile-image" src="{{profile_image}}" alt="{{name}}" /></a>
+                                    {{else}}
+                                        <a href="{{url}}" class="static-avatar author-profile-image">{{> "icons/avatar"}}</a>
+                                    {{/if}}
+                                </li>
+                            {{/foreach}}
+                            </ul>
+
+                            {{!-- <span class="reading-time">{{reading_time}}</span> --}}
+                            <span class="reading-time">{{date published_at timeago="true"}}</span>
+
+                        </footer>
+                    </div>
+                </article>
+
+            {{else}}
+                <div class="articale-item-box color-black">
+                    <div class="articale-item-bcontent">
+                        <div class="aib-content">
+                            {{!-- 文章图片 --}}
+                            <div class="artical-img-box middle-center"
+                                {{#if feature_image}}" 
+                                    style="background-image: url({{feature_image}})"
+                                {{else}}
+                                    style="background-image: url({{asset "images/default.png"}})"
+                                {{/if}}
+                            >
+                            </div>
+                            <div class="article-txt-box">
+                                {{!-- 文章标题 --}}
+                                <a  href="{{url}}" class="title">
+                                    {{title}}
+                                </a>
+                                <div class="aticle-txt color-gray">
+                                    {{!-- 文章内容 --}}
+                                    <div class="txt">
+                                        {{excerpt}}
+                                    </div>
+                                    <div class="aib-user color-gray">
+                                        {{!-- 作者 --}}
+                                        {{#author}}
+                                            <i class="icon-pen"></i>
+                                            &nbsp;<a href="{{url}}" class="user-name color-gray">{{name}}</a>
+                                        {{/author}}
+                                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                        {{!-- 时间 --}}
+                                        <span><i class="icon-time"></i>&nbsp;{{date published_at timeago="true"}}</span>
+                                        {{!-- 文章标签 --}}
+                                        <span class="aib-tages">
+                                            {{#if tags}}
+                                                {{#foreach tags}}
+                                                <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+                                                <a href="{{url}}" target="_blank" class="aib-tag-item color-blue">{{name}}</a>
+                                                {{/foreach}}
+                                            {{/if}}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{!-- 高斯模糊背景图片 --}}
-                {{!-- <div class="articale-item-box-bg">
-                    {{#if feature_image}}
-                        <img src="{{feature_image}}">
-                    {{else}}
-                        <img src="{{asset "images/default.png"}}" >
-                    {{/if}}
-                </div> --}}
-            </div>
+            {{/if}}
         {{/foreach}}
         {{ pagination}}
         <br>
     </div>
     <div class="article-right-box">
-        {{!-- 个人信息 --}}
-        {{!-- <div class="ar-item-box personal ar-item-hide">
-            <div class="ar-item-user-msg-box middle-center c-pointer">
-                <div class="ar-item-personal-msg middle-center">个人信息</div>
-                <div class="ar-item-h-box">
-                    <img class="ar-item-user-head" src="{{asset "images/default.png"}}" alt="" srcset="">
-                </div>
-                <div class="ar-item-user-name">何彬 | 男 | 成都</div>
-                <div class="ar-item-user-zhiye">web前端程序员</div>
-                <div class="ar-item-user-contact middle-center">
-                    <a href="https://github.com/mrbin1573" target="_blank" title="github地址" class="contact-item icon-github"></a>
-                    <a href="https://blog.csdn.net/qq_23260639" target="_blank" title="CSDN地址" class="contact-item icon-csdn"></a>
-                    <span title="1573406407@qq.com" class="contact-item icon-mail"></span>
-                    <span title="https://blog.csdn.net/qq_23260639" class="contact-item icon-qq"></span>
-                    <span title="掘金" class="txt icon-juejin middle-center"></span>
-                    <span title="简书" class="txt icon-jianshu middle-center"></span>
-                </div>
-            </div>
-        </div> --}}
+
         {{!-- 云标签 --}}
         <div class="ar-item-box tags">
             <div class="ar-item-title">
@@ -135,3 +165,8 @@
 
     </div>
 </div>
+
+$('span').each(function(){
+    var $this = $(this);
+    $this.attr('title',$this.text());
+})

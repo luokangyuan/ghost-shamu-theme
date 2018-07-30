@@ -3,12 +3,11 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} of the default.hbs template --}}
 
-<header class="site-header outer">
+<header class="site-header outer" style="height:0px;">
     <div class="inner">
         {{> "site-nav"}}
     </div>
 </header>
-
 {{!-- Everything inside the #post tags pulls data from the post --}}
 {{#post}}
 
@@ -17,7 +16,7 @@ into the {body} of the default.hbs template --}}
 
         <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
 
-            <header class="post-full-header">
+            {{!-- <header class="post-full-header">
                 <section class="post-full-meta">
                     <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
                     {{#primary_tag}}
@@ -25,14 +24,30 @@ into the {body} of the default.hbs template --}}
                     {{/primary_tag}}
                 </section>
                 <h1 class="post-full-title">{{title}}</h1>
-            </header>
+            </header> --}}
 
             {{#if feature_image}}
-            <figure class="post-full-image" style="background-image: url({{feature_image}})">
-            </figure>
+                <figure class="post-full-image" style="background-image: url({{feature_image}})">
+                </figure>
+            {{else}}
+                <figure class="post-full-image" style="background-image: url({{asset "images/banner1.jpg"}})">
+                </figure>
             {{/if}}
-
             <section class="post-full-content">
+
+                <header class="new-post-header">
+                    <h1 class="post-full-title">{{title}}</h1>
+                    <section class="post-full-meta">
+                        <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                        {{#if tags}}
+                            {{#foreach tags}}
+                            <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+                            <a href="{{url}}" target="_blank" class="aib-tag-item color-blue">{{name}}</a>
+                            {{/foreach}}
+                        {{/if}}
+                    </section>
+                </header>
+                
                 {{content}}
             </section>
 
@@ -101,7 +116,7 @@ into the {body} of the default.hbs template --}}
                         </ul>
                     </div>
                     <footer class="read-next-card-footer">
-                        <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='No posts' singular='% post' plural='See all % posts'}} →</a>
+                        <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='本标签无更多文章' singular='% 篇文章' plural='查看所有 % 篇文章'}}</a>
                     </footer>
                 </article>
                 {{/if}}
@@ -121,6 +136,7 @@ into the {body} of the default.hbs template --}}
         </div>
     </div>
 </aside>
+
 
 {{!-- Floating header which appears on-scroll, included from includes/floating-header.hbs --}}
 {{> floating-header}}
